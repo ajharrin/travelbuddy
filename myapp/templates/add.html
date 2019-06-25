@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add Travel Plan</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style media="screen">
+        .error {
+            color: red;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Add a Trip</h1>
+    <a href="/travels">Home</a>
+    <a href="/logout">Logout</a>
+    <a href="/add">New Travel Plan</a>
+    <form class="travelForm" action="/addPlan" method="post">
+      {%csrf_token%}
+      {% if messages %}
+              {% for message in messages %}
+                  {%if "destination" in message.tags%}
+                  <p{% if message.tags %} class="{{ message.tags }} error"{% endif %}>{{ message }}</p>
+                {%endif%}
+              {% endfor %}
+      {% endif %}
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label col-form-label-lg">Destination</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="destination" name = "destination" placeholder=" ">
+        </div>
+      </div>
+      <!-- <input type="text" class="form-control" id="destination" name="destination" placeholder="destination"> -->
+
+      {% if messages %}
+              {% for message in messages %}
+                  {%if "plan" in message.tags%}
+                  <p{% if message.tags %} class="{{ message.tags }} error"{% endif %}>{{ message }}</p>
+                {%endif%}
+              {% endfor %}
+      {% endif %}
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label col-form-label-lg">Description</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="plan" name="plan" placeholder=" ">
+        </div>
+      </div>
+      <!-- <input type="text" class="form-control" id="year" name="plan" placeholder="Description"> -->
+
+      {% if messages %}
+              {% for message in messages %}
+                  {%if "start_date" in message.tags%}
+                  <p{% if message.tags %} class="{{ message.tags }} error"{% endif %}>{{ message }}</p>
+                {%endif%}
+              {% endfor %}
+      {% endif %}
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label col-form-label-lg">Travel Date From:</label>
+        <div class="col-sm-6">
+          <input type="date" class="form-control" id="start_date" name= "start_date" placeholder="">
+        </div>
+      </div>
+      <!-- <input type="text" class="form-control" id="year" name="start_date" placeholder="Travel Date From"> -->
+
+      {% if messages %}
+              {% for message in messages %}
+                  {%if "end_date" in message.tags%}
+                  <p{% if message.tags %} class="{{ message.tags }} error"{% endif %}>{{ message }}</p>
+                {%endif%}
+              {% endfor %}
+      {% endif %}
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label col-form-label-lg">Travel Date To:</label>
+        <div class="col-sm-6">
+          <input type="date" class="form-control" id="inputEmail3" name= "end_date" placeholder="">
+        </div>
+      </div>
+      <!-- <input type="text" class="form-control" id="year" name="end_date" placeholder="Travel Date to"> -->
+      <input type="submit" name="" value="Add">
+    </form>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
